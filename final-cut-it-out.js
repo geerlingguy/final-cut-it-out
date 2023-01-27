@@ -35,7 +35,7 @@ function run(argv) {
 
   // Adjust these to your liking
   // One way to test, is comment out the delete section below and visually inspect
-  const startMargin = 0.175;
+  const startMargin = 0.125;
   const endMargin = 0.220;
 
   if (!Application("Final Cut Pro").running()) {
