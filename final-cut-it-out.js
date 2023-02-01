@@ -35,8 +35,8 @@ function run(argv) {
 
   // Adjust these to your liking
   // One way to test, is comment out the delete section below and visually inspect
-  const startMargin = 0.125;
-  const endMargin = 0.220;
+  const startMargin = 0.225;
+  const endMargin = 0.100;
 
   if (!Application("Final Cut Pro").running()) {
     console.log("Final Cut Pro isn't running");
