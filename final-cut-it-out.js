@@ -102,7 +102,7 @@ function run(argv) {
   delay(1.0);
 
   function moveToTimecode(timeInSeconds) {
-    delay(0.2);
+    delay(0.5);
 
     /*
       https://blog.frame.io/2017/07/17/timecode-and-frame-rates/#:~:text=In%20order%20to%20properly%20fit,a%20standalone%20HD%20video%20format.
