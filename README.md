@@ -20,11 +20,21 @@ You should clone or download this project to somewhere on your computer, and in 
 
 The following is how _I_ use this script. You could have a simpler or more complex workflow, depending on your needs.
 
-  1. Insert the video clip with silent portions into an open project timeline in Final Cut Pro X.
-  1. Export the video to a low-resolution file that can be processed via `ffmpeg`.
-  1. Run the following `ffmpeg` command to detect silence in your video: `ffmpeg -i [VIDEO.MP4] -af silencedetect=n=-35dB:d=800ms -f s16le -y /dev/null 2>&1 | tee silence.txt`
-  1. Run `./final-cut-it-out.js silence.txt` and watch as the script makes cuts through the timeline at the margins of each silent section, then goes back and deletes all the silent portions.
-  1. Run through the timeline and adjust the gaps using the select/trim tool as desired.
+First, export a project timeline with the silent portions to an 'Audio only' file or a low-resolution video file that `ffmpeg` can process.
+
+Second, run the following `ffmpeg` command to output silent portions into a text file:
+
+```
+ffmpeg -i [VIDEO.MP4] -af silencedetect=n=-35dB:d=800ms -f s16le -y /dev/null 2>&1 | tee silence.txt
+```
+
+Third, run this script to trim all the silent portions (it will take a little while if you have a long video):
+
+```
+./final-cut-it-out.js silence.txt
+```
+
+Finally, adjust the remaining gaps using the select/trim tool as desired.
 
 ## Configuration
 
