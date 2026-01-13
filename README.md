@@ -36,6 +36,38 @@ Third, run this script to trim all the silent portions (it will take a little wh
 
 Finally, adjust the remaining gaps using the select/trim tool as desired.
 
+## Bash Alias
+
+If you want to make it easier to run the whole process (once you're comfortable with the automation), you can set up a Bash or ZSH function (e.g. in `.bashrc` or `.zshrc`), like:
+
+```bash
+# Final Cut It Out - Silence Detection and Removal
+function fcio() {
+  if [ $# -lt 1 ]; then
+    echo "You must specify an audio or video file for processing."
+    return 0
+  fi
+
+  pushd /path/to/final-cut-it-out > /dev/null
+
+  echo "Detecting silence using ffmpeg..."
+  ffmpeg -i $1 -af silencedetect=n=-35dB:d=800ms -f s16le -y /dev/null 2>&1 | tee silence.txt
+
+  echo "Removing silent gaps in Final Cut Pro..."
+  ./final-cut-it-out.js silence.txt
+
+  echo "Finished removing silent gaps."
+  rm -f silence.txt
+  popd > /dev/null
+}
+```
+
+Then after exporting an audio or video file representing your timeline, you can run:
+
+```
+fcio /path/to/file.m4a
+```
+
 ## Configuration
 
 Before running this script, you should always have a backup Project/timeline in FCPX since this will make destructive edits to your video timeline! Cmd-Z should not be relied on in case of disaster—you've been warned!
