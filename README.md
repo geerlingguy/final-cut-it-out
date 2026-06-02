@@ -8,6 +8,14 @@ This project has its origins in [jashmenn's final-cut-it-out.js script](https://
 
 All credit goes to him and those who have left follow-up comments on his Gist.
 
+## Alternatives
+
+Since publishing this project, FxFactory released [SilenceScount](https://fxfactory.com/info/silencescout/), which runs in seconds _within_ Final Cut Pro, works on multicam, compound, and regular clips, and has many more options for customization.
+
+The downside? It's $99.
+
+So buy the plugin if you'd like, but if you want a free way to remove silence and gaps, this project has your back!
+
 ## Prerequisites
 
 This script is meant to work with Final Cut Pro X (on a Mac), and requires the use of `ffmpeg` to detect silent portions of the clip.
